@@ -1,0 +1,25 @@
+CREATE DATABASE IF NOT EXISTS reservams_auth_db;
+
+USE reservams_auth_db;
+
+CREATE TABLE roles (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(50) NOT NULL UNIQUE
+);
+
+CREATE TABLE users_auth (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    email VARCHAR(100) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,
+    enabled BOOLEAN NOT NULL DEFAULT TRUE,
+    created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    role_id BIGINT NOT NULL,
+
+    CONSTRAINT fk_users_auth_role
+        FOREIGN KEY (role_id)
+        REFERENCES roles(id)
+);
+
+INSERT INTO roles (name) VALUES ('ADMIN');
+INSERT INTO roles (name) VALUES ('OPERADOR');
+INSERT INTO roles (name) VALUES ('CLIENTE');
