@@ -21,10 +21,13 @@ public class SecurityConfig {
                 // desactivamos CSRF porque trabajamos con API REST
                 .csrf(csrf -> csrf.disable())
 
-                // permitimos los endpoints de autenticacion
+                // permitimos los endpoints de autenticacion, actuator y Swagger/OpenAPI
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/api/v1/auth/**").permitAll()
                         .requestMatchers("/actuator/**").permitAll()
+                        .requestMatchers("/swagger-ui/**").permitAll()
+                        .requestMatchers("/swagger-ui.html").permitAll()
+                        .requestMatchers("/v3/api-docs/**").permitAll()
                         .anyRequest().authenticated()
                 );
 
