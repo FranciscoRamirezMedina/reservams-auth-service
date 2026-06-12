@@ -1,7 +1,7 @@
 package com.duoc.reservams.authservice.controller;
 
 import com.duoc.reservams.authservice.dto.AuthResponseDTO;
-import com.duoc.reservams.authservice.dto.LoginRequestDTO   ;
+import com.duoc.reservams.authservice.dto.LoginRequestDTO;
 import com.duoc.reservams.authservice.dto.RegisterRequestDTO;
 import com.duoc.reservams.authservice.service.AuthService;
 import jakarta.validation.Valid;
